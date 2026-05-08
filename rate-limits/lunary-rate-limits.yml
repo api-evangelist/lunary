@@ -5,31 +5,37 @@ provider: Lunary
 providerId: lunary
 created: '2026-05-08'
 modified: '2026-05-08'
-reconciled: false
+reconciled: true
 tags:
-- AI
-- LLM
+- AI Evaluation
 - Observability
 - Open Source
-- Analytics
+- LLM
+- Tracing
+- Prompts
 - Rate Limiting
 - Quotas
 - Throttling
-description: Placeholder rate-limit artifact for Lunary. Replace with real limits once researched.
-notes: Initial scaffold — limits have not yet been reconciled.
+description: >-
+  Lunary's API uses a sliding-window rate limiter. The current published limit is 30 requests per
+  second per API key. Standard HTTP codes are returned (429 rate-limit, 422 invalid params, 403
+  unauthorized, 50x server). Self-hosted deployments are unconstrained beyond your own infrastructure.
+notes: Sliding window; 30 RPS per key on hosted SaaS.
 sources:
-- https://lunary.ai/
+- https://docs.lunary.ai/api
 responseCodes:
   throttled: 429
 limits:
-- name: Default
+- name: Per API key (hosted)
   scope: account
-  metric: varies
-  limit: see provider documentation
-  notes: Pending reconciliation.
+  metric: requests-per-second
+  limit: 30 RPS
+  notes: Sliding-window rate limiter on the hosted SaaS.
 policies:
 - name: Backoff Strategy
-  description: Clients should implement exponential backoff with jitter and honor any Retry-After header.
+  description: On 429, apply exponential backoff with jitter.
+- name: Self-Host Option
+  description: For very high event volume, deploy self-hosted to remove rate-limit ceiling.
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

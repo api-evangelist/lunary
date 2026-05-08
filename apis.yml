@@ -3,21 +3,49 @@ url: https://raw.githubusercontent.com/api-evangelist/lunary/refs/heads/main/api
 name: Lunary
 x-type: company
 description: >-
-  Lunary is an open-source LLM observability and analytics platform offering tracing, evaluations, prompt management, and user analytics for AI products.
+  Lunary is an open-source LLM observability and evaluation platform: tracing, prompt management,
+  datasets, evaluations, and analytics for LLM apps. Available as a hosted SaaS at lunary.ai and as a
+  self-hosted Apache 2.0 deployment. Exposes a REST API authenticated with Bearer tokens.
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - AI
-  - LLM
+  - AI Evaluation
   - Observability
   - Open Source
-  - Analytics
+  - LLM
+  - Tracing
+  - Prompts
 created: '2026-05-08'
 modified: '2026-05-08'
 specificationVersion: '0.19'
-apis: []
+apis:
+  - aid: lunary:platform
+    name: Lunary API
+    description: >-
+      REST API for Lunary covering ingestion (logs/traces), prompts (template management with versions and
+      labels), datasets, evaluations, projects, users, and analytics. Authentication uses Bearer tokens;
+      private API keys for management endpoints, public keys for ingestion.
+    humanURL: https://docs.lunary.ai/api
+    baseURL: https://api.lunary.ai/v1
+    tags:
+      - Logs
+      - Traces
+      - Prompts
+      - Datasets
+      - Evaluations
+    properties:
+      - type: Documentation
+        url: https://docs.lunary.ai/api
+      - type: GitHub
+        url: https://github.com/lunary-ai/lunary
+      - type: SelfHost
+        url: https://lunary.ai/docs/self-hosting
 common:
   - type: Website
     url: https://lunary.ai/
+  - type: DeveloperPortal
+    url: https://docs.lunary.ai/
+  - type: OpenSource
+    url: https://github.com/lunary-ai/lunary
   - type: Plans
     url: plans/lunary-plans-pricing.yml
   - type: RateLimits
