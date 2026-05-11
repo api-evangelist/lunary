@@ -52,6 +52,43 @@ common:
     url: rate-limits/lunary-rate-limits.yml
   - type: FinOps
     url: finops/lunary-finops.yml
+  - type: Integrations
+    url: https://lunary.ai/integrations
+integrations:
+  - name: Anthropic
+  - name: Flowise
+  - name: LangChain
+  - name: OpenRouter
+  - name: IBM WatsonX
+  - name: Mistral
+  - name: Grok
+  - name: Fireworks AI
+  - name: Ragas
+  - name: PowerBI
+  - name: Tableau
+  - name: MySQL
+  - name: Gemini
+  - name: AWS Bedrock
+  - name: Amplitude
+  - name: Airbyte
+  - name: Segment
+  - name: Email / SMTP
+  - name: Slack
+  - name: Zapier
+  - name: Redshift
+  - name: PostHog
+  - name: OpenLLMetry
+  - name: LlamaIndex
+  - name: SQL Server
+  - name: Databricks
+  - name: Snowflake
+  - name: LiteLLM
+  - name: Langflow
+  - name: Google BigQuery
+  - name: OpenAI
+  - name: Azure OpenAI
+  - name: SOC 2 Type II
+  - name: ISO 27001
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
