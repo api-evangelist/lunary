@@ -1,7 +1,7 @@
 aid: lunary
 url: https://raw.githubusercontent.com/api-evangelist/lunary/refs/heads/main/apis.yml
 name: Lunary
-x-type: company
+kind: company
 description: >-
   Lunary is an open-source LLM observability and evaluation platform: tracing, prompt management,
   datasets, evaluations, and analytics for LLM apps. Available as a hosted SaaS at lunary.ai and as a
