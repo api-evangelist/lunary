@@ -40,6 +40,8 @@ apis:
       - type: SelfHost
         url: https://lunary.ai/docs/self-hosting
 common:
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/lunaryai
   - type: Website
     url: https://lunary.ai/
   - type: DeveloperPortal
