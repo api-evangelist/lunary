@@ -1,0 +1,1274 @@
+openapi: 3.1.0
+info:
+  title: Lunary API
+  description: |
+    REST API for Lunary, an open-source LLM observability and evaluation
+    platform. Covers ingestion (runs/traces), prompt templates with versions,
+    datasets and dataset items, evaluations and criteria, analytics, audit
+    logs, checklists, playground endpoints, views, and models.
+
+    Three authentication schemes are used: project-scoped public API keys for
+    ingestion endpoints, project-scoped private API keys for management
+    endpoints, and organization-scoped API keys for org-level analytics. All
+    are passed as Bearer tokens in the Authorization header.
+  version: "1.0"
+  contact:
+    name: Lunary
+    url: https://docs.lunary.ai/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+  - url: https://api.lunary.ai
+    description: Lunary Cloud
+security:
+  - ProjectPrivateApiKeyAuth: []
+tags:
+  - name: Analytics
+  - name: AuditLogs
+  - name: Checklists
+  - name: Datasets
+  - name: DatasetsV2
+  - name: Evals
+  - name: ExternalUsers
+  - name: Models
+  - name: Playground
+  - name: Runs
+  - name: Templates
+  - name: TestEndpoint
+  - name: Views
+paths:
+  /v1/analytics/org/models/top:
+    get:
+      tags: [Analytics]
+      summary: Top models for the organization
+      operationId: getTopOrgModels
+      security:
+        - OrgApiKeyAuth: []
+      responses:
+        '200':
+          description: Top models
+          content:
+            application/json:
+              schema: { type: object }
+  /v1/audit-logs:
+    get:
+      tags: [AuditLogs]
+      summary: List audit logs
+      operationId: listAuditLogs
+      responses:
+        '200':
+          description: Audit logs
+          content:
+            application/json:
+              schema: { type: object }
+  /v1/checklists:
+    get:
+      tags: [Checklists]
+      summary: List checklists
+      operationId: listChecklists
+      responses:
+        '200':
+          description: Checklists
+          content:
+            application/json:
+              schema: { type: object }
+    post:
+      tags: [Checklists]
+      summary: Create checklist
+      operationId: createChecklist
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object }
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema: { type: object }
+  /v1/checklists/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      tags: [Checklists]
+      summary: Get checklist
+      operationId: getChecklist
+      responses:
+        '200':
+          description: A checklist
+          content:
+            application/json:
+              schema: { type: object }
+    patch:
+      tags: [Checklists]
+      summary: Update checklist
+      operationId: updateChecklist
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object }
+      responses:
+        '200':
+          description: Updated
+          content:
+            application/json:
+              schema: { type: object }
+    delete:
+      tags: [Checklists]
+      summary: Delete checklist
+      operationId: deleteChecklist
+      responses:
+        '204':
+          description: Deleted
+  /v1/datasets-v2:
+    get:
+      tags: [DatasetsV2]
+      summary: List datasets (v2)
+      operationId: listDatasetsV2
+      responses:
+        '200':
+          description: Datasets
+          content:
+            application/json:
+              schema: { type: object }
+    post:
+      tags: [DatasetsV2]
+      summary: Create dataset (v2)
+      operationId: createDatasetV2
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object }
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema: { type: object }
+  /v1/datasets-v2/{datasetId}:
+    parameters:
+      - name: datasetId
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      tags: [DatasetsV2]
+      summary: Get dataset (v2)
+      operationId: getDatasetV2
+      security:
+        - ProjectPublicApiKeyAuth: []
+      responses:
+        '200':
+          description: Dataset
+          content:
+            application/json:
+              schema: { type: object }
+    patch:
+      tags: [DatasetsV2]
+      summary: Update dataset (v2)
+      operationId: updateDatasetV2
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object }
+      responses:
+        '200':
+          description: Updated
+          content:
+            application/json:
+              schema: { type: object }
+    delete:
+      tags: [DatasetsV2]
+      summary: Delete dataset (v2)
+      operationId: deleteDatasetV2
+      responses:
+        '204':
+          description: Deleted
+  /v1/datasets-v2/{datasetId}/evaluators:
+    parameters:
+      - name: datasetId
+        in: path
+        required: true
+        schema: { type: string }
+    post:
+      tags: [DatasetsV2]
+      summary: Add evaluator slot to dataset
+      operationId: addDatasetEvaluator
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object }
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema: { type: object }
+  /v1/datasets-v2/{datasetId}/evaluators/{slot}:
+    parameters:
+      - name: datasetId
+        in: path
+        required: true
+        schema: { type: string }
+      - name: slot
+        in: path
+        required: true
+        schema: { type: string }
+    delete:
+      tags: [DatasetsV2]
+      summary: Remove evaluator slot
+      operationId: removeDatasetEvaluator
+      responses:
+        '204':
+          description: Removed
+  /v1/datasets-v2/{datasetId}/evaluators/run:
+    parameters:
+      - name: datasetId
+        in: path
+        required: true
+        schema: { type: string }
+    post:
+      tags: [DatasetsV2]
+      summary: Run dataset evaluators
+      operationId: runDatasetEvaluators
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object }
+      responses:
+        '202':
+          description: Accepted
+          content:
+            application/json:
+              schema: { type: object }
+  /v1/datasets-v2/{datasetId}/import:
+    parameters:
+      - name: datasetId
+        in: path
+        required: true
+        schema: { type: string }
+    post:
+      tags: [DatasetsV2]
+      summary: Import items into dataset
+      operationId: importDatasetItems
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object }
+      responses:
+        '202':
+          description: Accepted
+          content:
+            application/json:
+              schema: { type: object }
+  /v1/datasets-v2/{datasetId}/duplicate:
+    parameters:
+      - name: datasetId
+        in: path
+        required: true
+        schema: { type: string }
+    post:
+      tags: [DatasetsV2]
+      summary: Duplicate dataset
+      operationId: duplicateDataset
+      responses:
+        '201':
+          description: Duplicated
+          content:
+            application/json:
+              schema: { type: object }
+  /v1/datasets-v2/{datasetId}/versions:
+    parameters:
+      - name: datasetId
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      tags: [DatasetsV2]
+      summary: List dataset versions
+      operationId: listDatasetVersions
+      responses:
+        '200':
+          description: Versions
+          content:
+            application/json:
+              schema: { type: object }
+    post:
+      tags: [DatasetsV2]
+      summary: Create dataset version
+      operationId: createDatasetVersion
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object }
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema: { type: object }
+  /v1/datasets-v2/{datasetId}/versions/{versionId}:
+    parameters:
+      - name: datasetId
+        in: path
+        required: true
+        schema: { type: string }
+      - name: versionId
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      tags: [DatasetsV2]
+      summary: Get dataset version
+      operationId: getDatasetVersion
+      responses:
+        '200':
+          description: Version
+          content:
+            application/json:
+              schema: { type: object }
+  /v1/datasets-v2/{datasetId}/versions/{versionId}/restore:
+    parameters:
+      - name: datasetId
+        in: path
+        required: true
+        schema: { type: string }
+      - name: versionId
+        in: path
+        required: true
+        schema: { type: string }
+    post:
+      tags: [DatasetsV2]
+      summary: Restore dataset version
+      operationId: restoreDatasetVersion
+      responses:
+        '200':
+          description: Restored
+          content:
+            application/json:
+              schema: { type: object }
+  /v1/datasets-v2/{datasetId}/items:
+    parameters:
+      - name: datasetId
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      tags: [DatasetsV2]
+      summary: List dataset items
+      operationId: listDatasetItems
+      responses:
+        '200':
+          description: Items
+          content:
+            application/json:
+              schema: { type: object }
+    post:
+      tags: [DatasetsV2]
+      summary: Create dataset item
+      operationId: createDatasetItem
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object }
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema: { type: object }
+  /v1/datasets-v2/{datasetId}/items/{itemId}:
+    parameters:
+      - name: datasetId
+        in: path
+        required: true
+        schema: { type: string }
+      - name: itemId
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      tags: [DatasetsV2]
+      summary: Get dataset item
+      operationId: getDatasetItem
+      responses:
+        '200':
+          description: Item
+          content:
+            application/json:
+              schema: { type: object }
+    patch:
+      tags: [DatasetsV2]
+      summary: Update dataset item
+      operationId: updateDatasetItem
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object }
+      responses:
+        '200':
+          description: Updated
+          content:
+            application/json:
+              schema: { type: object }
+    delete:
+      tags: [DatasetsV2]
+      summary: Delete dataset item
+      operationId: deleteDatasetItem
+      responses:
+        '204':
+          description: Deleted
+  /v1/datasets-v2/{datasetId}/items/{itemId}/generate:
+    parameters:
+      - name: datasetId
+        in: path
+        required: true
+        schema: { type: string }
+      - name: itemId
+        in: path
+        required: true
+        schema: { type: string }
+    post:
+      tags: [DatasetsV2]
+      summary: Generate output for dataset item
+      operationId: generateDatasetItem
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema: { type: object }
+      responses:
+        '200':
+          description: Generation result
+          content:
+            application/json:
+              schema: { type: object }
+  /v1/datasets:
+    get:
+      tags: [Datasets]
+      summary: List datasets
+      operationId: listDatasets
+      responses:
+        '200':
+          description: Datasets
+          content:
+            application/json:
+              schema: { type: object }
+    post:
+      tags: [Datasets]
+      summary: Create dataset
+      operationId: createDataset
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object }
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema: { type: object }
+  /v1/datasets/{identifier}:
+    parameters:
+      - name: identifier
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      tags: [Datasets]
+      summary: Get dataset by identifier
+      operationId: getDataset
+      security:
+        - ProjectPublicApiKeyAuth: []
+      responses:
+        '200':
+          description: Dataset
+          content:
+            application/json:
+              schema: { type: object }
+  /v1/datasets/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema: { type: string }
+    patch:
+      tags: [Datasets]
+      summary: Update dataset
+      operationId: updateDataset
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object }
+      responses:
+        '200':
+          description: Updated
+          content:
+            application/json:
+              schema: { type: object }
+    delete:
+      tags: [Datasets]
+      summary: Delete dataset
+      operationId: deleteDataset
+      responses:
+        '204':
+          description: Deleted
+  /v1/evals:
+    get:
+      tags: [Evals]
+      summary: List evaluations
+      operationId: listEvals
+      responses:
+        '200':
+          description: Evaluations
+          content:
+            application/json:
+              schema: { type: object }
+    post:
+      tags: [Evals]
+      summary: Create evaluation
+      operationId: createEval
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object }
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema: { type: object }
+  /v1/evals/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      tags: [Evals]
+      summary: Get evaluation
+      operationId: getEval
+      responses:
+        '200':
+          description: Evaluation
+          content:
+            application/json:
+              schema: { type: object }
+    patch:
+      tags: [Evals]
+      summary: Update evaluation
+      operationId: updateEval
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object }
+      responses:
+        '200':
+          description: Updated
+          content:
+            application/json:
+              schema: { type: object }
+    delete:
+      tags: [Evals]
+      summary: Delete evaluation
+      operationId: deleteEval
+      responses:
+        '204':
+          description: Deleted
+  /v1/evals/{id}/run:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema: { type: string }
+    post:
+      tags: [Evals]
+      summary: Run evaluation
+      operationId: runEval
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema: { type: object }
+      responses:
+        '202':
+          description: Accepted
+          content:
+            application/json:
+              schema: { type: object }
+  /v1/evals/criteria:
+    post:
+      tags: [Evals]
+      summary: Create evaluation criterion
+      operationId: createEvalCriterion
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object }
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema: { type: object }
+  /v1/evals/criteria/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      tags: [Evals]
+      summary: Get evaluation criterion
+      operationId: getEvalCriterion
+      responses:
+        '200':
+          description: Criterion
+          content:
+            application/json:
+              schema: { type: object }
+    patch:
+      tags: [Evals]
+      summary: Update evaluation criterion
+      operationId: updateEvalCriterion
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object }
+      responses:
+        '200':
+          description: Updated
+          content:
+            application/json:
+              schema: { type: object }
+    delete:
+      tags: [Evals]
+      summary: Delete evaluation criterion
+      operationId: deleteEvalCriterion
+      responses:
+        '204':
+          description: Deleted
+  /v1/evals/{evalId}/results:
+    parameters:
+      - name: evalId
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      tags: [Evals]
+      summary: List evaluation results
+      operationId: listEvalResults
+      responses:
+        '200':
+          description: Results
+          content:
+            application/json:
+              schema: { type: object }
+  /v1/evals/results/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      tags: [Evals]
+      summary: Get evaluation result
+      operationId: getEvalResult
+      responses:
+        '200':
+          description: Result
+          content:
+            application/json:
+              schema: { type: object }
+  /v1/external-users:
+    get:
+      tags: [ExternalUsers]
+      summary: List external users
+      operationId: listExternalUsers
+      responses:
+        '200':
+          description: External users
+          content:
+            application/json:
+              schema: { type: object }
+  /v1/external-users/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      tags: [ExternalUsers]
+      summary: Get external user
+      operationId: getExternalUser
+      responses:
+        '200':
+          description: External user
+          content:
+            application/json:
+              schema: { type: object }
+    delete:
+      tags: [ExternalUsers]
+      summary: Delete external user
+      operationId: deleteExternalUser
+      responses:
+        '204':
+          description: Deleted
+  /v1/models:
+    get:
+      tags: [Models]
+      summary: List models
+      operationId: listModels
+      responses:
+        '200':
+          description: Models
+          content:
+            application/json:
+              schema: { type: object }
+    post:
+      tags: [Models]
+      summary: Create model
+      operationId: createModel
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object }
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema: { type: object }
+  /v1/models/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema: { type: string }
+    patch:
+      tags: [Models]
+      summary: Update model
+      operationId: updateModel
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object }
+      responses:
+        '200':
+          description: Updated
+          content:
+            application/json:
+              schema: { type: object }
+    delete:
+      tags: [Models]
+      summary: Delete model
+      operationId: deleteModel
+      responses:
+        '204':
+          description: Deleted
+  /v1/playground-endpoints:
+    get:
+      tags: [Playground]
+      summary: List playground endpoints
+      operationId: listPlaygroundEndpoints
+      responses:
+        '200':
+          description: Playground endpoints
+          content:
+            application/json:
+              schema: { type: object }
+    post:
+      tags: [Playground]
+      summary: Create playground endpoint
+      operationId: createPlaygroundEndpoint
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object }
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema: { type: object }
+  /v1/playground-endpoints/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      tags: [Playground]
+      summary: Get playground endpoint
+      operationId: getPlaygroundEndpoint
+      responses:
+        '200':
+          description: Endpoint
+          content:
+            application/json:
+              schema: { type: object }
+    put:
+      tags: [Playground]
+      summary: Replace playground endpoint
+      operationId: replacePlaygroundEndpoint
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object }
+      responses:
+        '200':
+          description: Replaced
+          content:
+            application/json:
+              schema: { type: object }
+    delete:
+      tags: [Playground]
+      summary: Delete playground endpoint
+      operationId: deletePlaygroundEndpoint
+      responses:
+        '204':
+          description: Deleted
+  /v1/runs:
+    get:
+      tags: [Runs]
+      summary: List runs
+      operationId: listRuns
+      parameters:
+        - name: limit
+          in: query
+          schema: { type: integer }
+        - name: page
+          in: query
+          schema: { type: integer }
+        - name: order
+          in: query
+          schema: { type: string, enum: [asc, desc] }
+        - name: type
+          in: query
+          schema: { type: string }
+      responses:
+        '200':
+          description: Runs
+          content:
+            application/json:
+              schema: { type: object }
+  /v1/runs/usage:
+    get:
+      tags: [Runs]
+      summary: Get run usage statistics
+      operationId: getRunUsage
+      responses:
+        '200':
+          description: Usage stats
+          content:
+            application/json:
+              schema: { type: object }
+  /v1/runs/export:
+    get:
+      tags: [Runs]
+      summary: Export runs
+      operationId: exportRuns
+      responses:
+        '200':
+          description: Export
+          content:
+            application/json:
+              schema: { type: object }
+  /v1/runs/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      tags: [Runs]
+      summary: Get run
+      operationId: getRun
+      responses:
+        '200':
+          description: A run
+          content:
+            application/json:
+              schema: { type: object }
+    delete:
+      tags: [Runs]
+      summary: Delete run
+      operationId: deleteRun
+      responses:
+        '204':
+          description: Deleted
+  /v1/runs/{id}/visibility:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema: { type: string }
+    patch:
+      tags: [Runs]
+      summary: Update run visibility
+      operationId: updateRunVisibility
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object }
+      responses:
+        '200':
+          description: Updated
+          content:
+            application/json:
+              schema: { type: object }
+  /v1/runs/{id}/tags:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema: { type: string }
+    patch:
+      tags: [Runs]
+      summary: Update run tags
+      operationId: updateRunTags
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object }
+      responses:
+        '200':
+          description: Updated
+          content:
+            application/json:
+              schema: { type: object }
+  /v1/runs/{id}/feedback:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema: { type: string }
+    patch:
+      tags: [Runs]
+      summary: Update run feedback
+      operationId: updateRunFeedback
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object }
+      responses:
+        '200':
+          description: Updated
+          content:
+            application/json:
+              schema: { type: object }
+  /v1/runs/{id}/score:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema: { type: string }
+    patch:
+      tags: [Runs]
+      summary: Update run score
+      operationId: updateRunScore
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object }
+      responses:
+        '200':
+          description: Updated
+          content:
+            application/json:
+              schema: { type: object }
+  /v1/runs/{id}/related:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      tags: [Runs]
+      summary: List related runs
+      operationId: listRelatedRuns
+      responses:
+        '200':
+          description: Related runs
+          content:
+            application/json:
+              schema: { type: object }
+  /v1/runs/ingest:
+    post:
+      tags: [Runs]
+      summary: Ingest run events
+      operationId: ingestRuns
+      security:
+        - ProjectPublicApiKeyAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object }
+      responses:
+        '202':
+          description: Accepted
+          content:
+            application/json:
+              schema: { type: object }
+  /v1/template-versions/latest:
+    get:
+      tags: [Templates]
+      summary: Get latest template version
+      operationId: getLatestTemplateVersion
+      security:
+        - ProjectPublicApiKeyAuth: []
+      responses:
+        '200':
+          description: Template version
+          content:
+            application/json:
+              schema: { type: object }
+  /v1/template-versions/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema: { type: string }
+    patch:
+      tags: [Templates]
+      summary: Update template version
+      operationId: updateTemplateVersion
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object }
+      responses:
+        '200':
+          description: Updated
+          content:
+            application/json:
+              schema: { type: object }
+  /v1/templates:
+    get:
+      tags: [Templates]
+      summary: List templates
+      operationId: listTemplates
+      responses:
+        '200':
+          description: Templates
+          content:
+            application/json:
+              schema: { type: object }
+    post:
+      tags: [Templates]
+      summary: Create template
+      operationId: createTemplate
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object }
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema: { type: object }
+  /v1/templates/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      tags: [Templates]
+      summary: Get template
+      operationId: getTemplate
+      responses:
+        '200':
+          description: Template
+          content:
+            application/json:
+              schema: { type: object }
+    patch:
+      tags: [Templates]
+      summary: Update template
+      operationId: updateTemplate
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object }
+      responses:
+        '200':
+          description: Updated
+          content:
+            application/json:
+              schema: { type: object }
+    delete:
+      tags: [Templates]
+      summary: Delete template
+      operationId: deleteTemplate
+      responses:
+        '204':
+          description: Deleted
+  /v1/templates/{id}/versions:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema: { type: string }
+    post:
+      tags: [Templates]
+      summary: Create template version
+      operationId: createTemplateVersion
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object }
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema: { type: object }
+  /v1/test-endpoint:
+    post:
+      tags: [TestEndpoint]
+      summary: Test endpoint
+      operationId: testEndpoint
+      security:
+        - ProjectPublicApiKeyAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object }
+      responses:
+        '200':
+          description: Test result
+          content:
+            application/json:
+              schema: { type: object }
+  /v1/test-endpoint/auth:
+    post:
+      tags: [TestEndpoint]
+      summary: Test endpoint auth
+      operationId: testEndpointAuth
+      security:
+        - ProjectPublicApiKeyAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object }
+      responses:
+        '200':
+          description: Auth result
+          content:
+            application/json:
+              schema: { type: object }
+  /v1/views:
+    get:
+      tags: [Views]
+      summary: List views
+      operationId: listViews
+      responses:
+        '200':
+          description: Views
+          content:
+            application/json:
+              schema: { type: object }
+    post:
+      tags: [Views]
+      summary: Create view
+      operationId: createView
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object }
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema: { type: object }
+  /v1/views/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      tags: [Views]
+      summary: Get view
+      operationId: getView
+      responses:
+        '200':
+          description: View
+          content:
+            application/json:
+              schema: { type: object }
+    patch:
+      tags: [Views]
+      summary: Update view
+      operationId: updateView
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object }
+      responses:
+        '200':
+          description: Updated
+          content:
+            application/json:
+              schema: { type: object }
+    delete:
+      tags: [Views]
+      summary: Delete view
+      operationId: deleteView
+      responses:
+        '204':
+          description: Deleted
+components:
+  securitySchemes:
+    ProjectPrivateApiKeyAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Lunary project private API key (UUID)
+    ProjectPublicApiKeyAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Lunary project public API key (UUID)
+    OrgApiKeyAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Lunary organization API key (UUID)
