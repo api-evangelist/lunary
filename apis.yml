@@ -6,7 +6,7 @@ description: >-
   Lunary is an open-source LLM observability and evaluation platform: tracing, prompt management,
   datasets, evaluations, and analytics for LLM apps. Available as a hosted SaaS at lunary.ai and as a
   self-hosted Apache 2.0 deployment. Exposes a REST API authenticated with Bearer tokens.
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - AI Evaluation
   - Observability
