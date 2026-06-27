@@ -56,7 +56,7 @@ common:
     url: finops/lunary-finops.yml
   - type: Integrations
     url: https://lunary.ai/integrations
-  - type: LLMsTxt
+  - type: LlmsText
     url: https://docs.lunary.ai/llms.txt
 integrations:
   - name: Anthropic
