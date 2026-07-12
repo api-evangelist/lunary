@@ -40,6 +40,10 @@ apis:
       - type: SelfHost
         url: https://lunary.ai/docs/self-hosting
 common:
+  - type: DomainSecurity
+    url: security/lunary-domain-security.yml
+  - type: Authentication
+    url: authentication/lunary-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/lunaryai
   - type: Website
@@ -58,6 +62,8 @@ common:
     url: https://lunary.ai/integrations
   - type: LlmsText
     url: https://docs.lunary.ai/llms.txt
+  - url: https://lunary.ai/blog
+    type: Blog
 integrations:
   - name: Anthropic
   - name: Flowise

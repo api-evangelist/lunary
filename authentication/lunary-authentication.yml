@@ -1,0 +1,13 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/lunary-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: ProjectPrivateApiKeyAuth
+  type: http
+  scheme: bearer
+  bearerFormat: Lunary project private API key (UUID)
+  sources:
+  - openapi/lunary-openapi.yml
