@@ -40,6 +40,8 @@ apis:
       - type: SelfHost
         url: https://lunary.ai/docs/self-hosting
 common:
+  - type: AgenticAccess
+    url: agentic-access/lunary-agentic-access.yml
   - type: DomainSecurity
     url: security/lunary-domain-security.yml
   - type: Authentication
