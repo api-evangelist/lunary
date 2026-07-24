@@ -1,0 +1,90 @@
+openapi: 3.1.0
+info:
+  title: Lunary Analytics ExternalUsers API
+  description: 'REST API for Lunary, an open-source LLM observability and evaluation
+
+    platform. Covers ingestion (runs/traces), prompt templates with versions,
+
+    datasets and dataset items, evaluations and criteria, analytics, audit
+
+    logs, checklists, playground endpoints, views, and models.
+
+
+    Three authentication schemes are used: project-scoped public API keys for
+
+    ingestion endpoints, project-scoped private API keys for management
+
+    endpoints, and organization-scoped API keys for org-level analytics. All
+
+    are passed as Bearer tokens in the Authorization header.
+
+    '
+  version: '1.0'
+  contact:
+    name: Lunary
+    url: https://docs.lunary.ai/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: https://api.lunary.ai
+  description: Lunary Cloud
+security:
+- ProjectPrivateApiKeyAuth: []
+tags:
+- name: ExternalUsers
+paths:
+  /v1/external-users:
+    get:
+      tags:
+      - ExternalUsers
+      summary: List external users
+      operationId: listExternalUsers
+      responses:
+        '200':
+          description: External users
+          content:
+            application/json:
+              schema:
+                type: object
+  /v1/external-users/{id}:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - ExternalUsers
+      summary: Get external user
+      operationId: getExternalUser
+      responses:
+        '200':
+          description: External user
+          content:
+            application/json:
+              schema:
+                type: object
+    delete:
+      tags:
+      - ExternalUsers
+      summary: Delete external user
+      operationId: deleteExternalUser
+      responses:
+        '204':
+          description: Deleted
+components:
+  securitySchemes:
+    ProjectPrivateApiKeyAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Lunary project private API key (UUID)
+    ProjectPublicApiKeyAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Lunary project public API key (UUID)
+    OrgApiKeyAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Lunary organization API key (UUID)

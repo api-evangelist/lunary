@@ -1,0 +1,253 @@
+openapi: 3.1.0
+info:
+  title: Lunary Analytics Evals API
+  description: 'REST API for Lunary, an open-source LLM observability and evaluation
+
+    platform. Covers ingestion (runs/traces), prompt templates with versions,
+
+    datasets and dataset items, evaluations and criteria, analytics, audit
+
+    logs, checklists, playground endpoints, views, and models.
+
+
+    Three authentication schemes are used: project-scoped public API keys for
+
+    ingestion endpoints, project-scoped private API keys for management
+
+    endpoints, and organization-scoped API keys for org-level analytics. All
+
+    are passed as Bearer tokens in the Authorization header.
+
+    '
+  version: '1.0'
+  contact:
+    name: Lunary
+    url: https://docs.lunary.ai/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: https://api.lunary.ai
+  description: Lunary Cloud
+security:
+- ProjectPrivateApiKeyAuth: []
+tags:
+- name: Evals
+paths:
+  /v1/evals:
+    get:
+      tags:
+      - Evals
+      summary: List evaluations
+      operationId: listEvals
+      responses:
+        '200':
+          description: Evaluations
+          content:
+            application/json:
+              schema:
+                type: object
+    post:
+      tags:
+      - Evals
+      summary: Create evaluation
+      operationId: createEval
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+  /v1/evals/{id}:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Evals
+      summary: Get evaluation
+      operationId: getEval
+      responses:
+        '200':
+          description: Evaluation
+          content:
+            application/json:
+              schema:
+                type: object
+    patch:
+      tags:
+      - Evals
+      summary: Update evaluation
+      operationId: updateEval
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Updated
+          content:
+            application/json:
+              schema:
+                type: object
+    delete:
+      tags:
+      - Evals
+      summary: Delete evaluation
+      operationId: deleteEval
+      responses:
+        '204':
+          description: Deleted
+  /v1/evals/{id}/run:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      tags:
+      - Evals
+      summary: Run evaluation
+      operationId: runEval
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '202':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                type: object
+  /v1/evals/criteria:
+    post:
+      tags:
+      - Evals
+      summary: Create evaluation criterion
+      operationId: createEvalCriterion
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+  /v1/evals/criteria/{id}:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Evals
+      summary: Get evaluation criterion
+      operationId: getEvalCriterion
+      responses:
+        '200':
+          description: Criterion
+          content:
+            application/json:
+              schema:
+                type: object
+    patch:
+      tags:
+      - Evals
+      summary: Update evaluation criterion
+      operationId: updateEvalCriterion
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Updated
+          content:
+            application/json:
+              schema:
+                type: object
+    delete:
+      tags:
+      - Evals
+      summary: Delete evaluation criterion
+      operationId: deleteEvalCriterion
+      responses:
+        '204':
+          description: Deleted
+  /v1/evals/{evalId}/results:
+    parameters:
+    - name: evalId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Evals
+      summary: List evaluation results
+      operationId: listEvalResults
+      responses:
+        '200':
+          description: Results
+          content:
+            application/json:
+              schema:
+                type: object
+  /v1/evals/results/{id}:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Evals
+      summary: Get evaluation result
+      operationId: getEvalResult
+      responses:
+        '200':
+          description: Result
+          content:
+            application/json:
+              schema:
+                type: object
+components:
+  securitySchemes:
+    ProjectPrivateApiKeyAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Lunary project private API key (UUID)
+    ProjectPublicApiKeyAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Lunary project public API key (UUID)
+    OrgApiKeyAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Lunary organization API key (UUID)

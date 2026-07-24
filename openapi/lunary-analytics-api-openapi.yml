@@ -1,0 +1,65 @@
+openapi: 3.1.0
+info:
+  title: Lunary Analytics API
+  description: 'REST API for Lunary, an open-source LLM observability and evaluation
+
+    platform. Covers ingestion (runs/traces), prompt templates with versions,
+
+    datasets and dataset items, evaluations and criteria, analytics, audit
+
+    logs, checklists, playground endpoints, views, and models.
+
+
+    Three authentication schemes are used: project-scoped public API keys for
+
+    ingestion endpoints, project-scoped private API keys for management
+
+    endpoints, and organization-scoped API keys for org-level analytics. All
+
+    are passed as Bearer tokens in the Authorization header.
+
+    '
+  version: '1.0'
+  contact:
+    name: Lunary
+    url: https://docs.lunary.ai/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: https://api.lunary.ai
+  description: Lunary Cloud
+security:
+- ProjectPrivateApiKeyAuth: []
+tags:
+- name: Analytics
+paths:
+  /v1/analytics/org/models/top:
+    get:
+      tags:
+      - Analytics
+      summary: Top models for the organization
+      operationId: getTopOrgModels
+      security:
+      - OrgApiKeyAuth: []
+      responses:
+        '200':
+          description: Top models
+          content:
+            application/json:
+              schema:
+                type: object
+components:
+  securitySchemes:
+    ProjectPrivateApiKeyAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Lunary project private API key (UUID)
+    ProjectPublicApiKeyAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Lunary project public API key (UUID)
+    OrgApiKeyAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Lunary organization API key (UUID)

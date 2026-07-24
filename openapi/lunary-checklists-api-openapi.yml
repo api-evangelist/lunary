@@ -1,0 +1,126 @@
+openapi: 3.1.0
+info:
+  title: Lunary Analytics Checklists API
+  description: 'REST API for Lunary, an open-source LLM observability and evaluation
+
+    platform. Covers ingestion (runs/traces), prompt templates with versions,
+
+    datasets and dataset items, evaluations and criteria, analytics, audit
+
+    logs, checklists, playground endpoints, views, and models.
+
+
+    Three authentication schemes are used: project-scoped public API keys for
+
+    ingestion endpoints, project-scoped private API keys for management
+
+    endpoints, and organization-scoped API keys for org-level analytics. All
+
+    are passed as Bearer tokens in the Authorization header.
+
+    '
+  version: '1.0'
+  contact:
+    name: Lunary
+    url: https://docs.lunary.ai/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: https://api.lunary.ai
+  description: Lunary Cloud
+security:
+- ProjectPrivateApiKeyAuth: []
+tags:
+- name: Checklists
+paths:
+  /v1/checklists:
+    get:
+      tags:
+      - Checklists
+      summary: List checklists
+      operationId: listChecklists
+      responses:
+        '200':
+          description: Checklists
+          content:
+            application/json:
+              schema:
+                type: object
+    post:
+      tags:
+      - Checklists
+      summary: Create checklist
+      operationId: createChecklist
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+  /v1/checklists/{id}:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Checklists
+      summary: Get checklist
+      operationId: getChecklist
+      responses:
+        '200':
+          description: A checklist
+          content:
+            application/json:
+              schema:
+                type: object
+    patch:
+      tags:
+      - Checklists
+      summary: Update checklist
+      operationId: updateChecklist
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Updated
+          content:
+            application/json:
+              schema:
+                type: object
+    delete:
+      tags:
+      - Checklists
+      summary: Delete checklist
+      operationId: deleteChecklist
+      responses:
+        '204':
+          description: Deleted
+components:
+  securitySchemes:
+    ProjectPrivateApiKeyAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Lunary project private API key (UUID)
+    ProjectPublicApiKeyAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Lunary project public API key (UUID)
+    OrgApiKeyAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Lunary organization API key (UUID)

@@ -1,0 +1,191 @@
+openapi: 3.1.0
+info:
+  title: Lunary Analytics Templates API
+  description: 'REST API for Lunary, an open-source LLM observability and evaluation
+
+    platform. Covers ingestion (runs/traces), prompt templates with versions,
+
+    datasets and dataset items, evaluations and criteria, analytics, audit
+
+    logs, checklists, playground endpoints, views, and models.
+
+
+    Three authentication schemes are used: project-scoped public API keys for
+
+    ingestion endpoints, project-scoped private API keys for management
+
+    endpoints, and organization-scoped API keys for org-level analytics. All
+
+    are passed as Bearer tokens in the Authorization header.
+
+    '
+  version: '1.0'
+  contact:
+    name: Lunary
+    url: https://docs.lunary.ai/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: https://api.lunary.ai
+  description: Lunary Cloud
+security:
+- ProjectPrivateApiKeyAuth: []
+tags:
+- name: Templates
+paths:
+  /v1/template-versions/latest:
+    get:
+      tags:
+      - Templates
+      summary: Get latest template version
+      operationId: getLatestTemplateVersion
+      security:
+      - ProjectPublicApiKeyAuth: []
+      responses:
+        '200':
+          description: Template version
+          content:
+            application/json:
+              schema:
+                type: object
+  /v1/template-versions/{id}:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    patch:
+      tags:
+      - Templates
+      summary: Update template version
+      operationId: updateTemplateVersion
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Updated
+          content:
+            application/json:
+              schema:
+                type: object
+  /v1/templates:
+    get:
+      tags:
+      - Templates
+      summary: List templates
+      operationId: listTemplates
+      responses:
+        '200':
+          description: Templates
+          content:
+            application/json:
+              schema:
+                type: object
+    post:
+      tags:
+      - Templates
+      summary: Create template
+      operationId: createTemplate
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+  /v1/templates/{id}:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Templates
+      summary: Get template
+      operationId: getTemplate
+      responses:
+        '200':
+          description: Template
+          content:
+            application/json:
+              schema:
+                type: object
+    patch:
+      tags:
+      - Templates
+      summary: Update template
+      operationId: updateTemplate
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Updated
+          content:
+            application/json:
+              schema:
+                type: object
+    delete:
+      tags:
+      - Templates
+      summary: Delete template
+      operationId: deleteTemplate
+      responses:
+        '204':
+          description: Deleted
+  /v1/templates/{id}/versions:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      tags:
+      - Templates
+      summary: Create template version
+      operationId: createTemplateVersion
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+components:
+  securitySchemes:
+    ProjectPrivateApiKeyAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Lunary project private API key (UUID)
+    ProjectPublicApiKeyAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Lunary project public API key (UUID)
+    OrgApiKeyAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Lunary organization API key (UUID)

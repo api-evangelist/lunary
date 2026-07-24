@@ -1,0 +1,276 @@
+openapi: 3.1.0
+info:
+  title: Lunary Analytics Runs API
+  description: 'REST API for Lunary, an open-source LLM observability and evaluation
+
+    platform. Covers ingestion (runs/traces), prompt templates with versions,
+
+    datasets and dataset items, evaluations and criteria, analytics, audit
+
+    logs, checklists, playground endpoints, views, and models.
+
+
+    Three authentication schemes are used: project-scoped public API keys for
+
+    ingestion endpoints, project-scoped private API keys for management
+
+    endpoints, and organization-scoped API keys for org-level analytics. All
+
+    are passed as Bearer tokens in the Authorization header.
+
+    '
+  version: '1.0'
+  contact:
+    name: Lunary
+    url: https://docs.lunary.ai/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: https://api.lunary.ai
+  description: Lunary Cloud
+security:
+- ProjectPrivateApiKeyAuth: []
+tags:
+- name: Runs
+paths:
+  /v1/runs:
+    get:
+      tags:
+      - Runs
+      summary: List runs
+      operationId: listRuns
+      parameters:
+      - name: limit
+        in: query
+        schema:
+          type: integer
+      - name: page
+        in: query
+        schema:
+          type: integer
+      - name: order
+        in: query
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+      - name: type
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Runs
+          content:
+            application/json:
+              schema:
+                type: object
+  /v1/runs/usage:
+    get:
+      tags:
+      - Runs
+      summary: Get run usage statistics
+      operationId: getRunUsage
+      responses:
+        '200':
+          description: Usage stats
+          content:
+            application/json:
+              schema:
+                type: object
+  /v1/runs/export:
+    get:
+      tags:
+      - Runs
+      summary: Export runs
+      operationId: exportRuns
+      responses:
+        '200':
+          description: Export
+          content:
+            application/json:
+              schema:
+                type: object
+  /v1/runs/{id}:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Runs
+      summary: Get run
+      operationId: getRun
+      responses:
+        '200':
+          description: A run
+          content:
+            application/json:
+              schema:
+                type: object
+    delete:
+      tags:
+      - Runs
+      summary: Delete run
+      operationId: deleteRun
+      responses:
+        '204':
+          description: Deleted
+  /v1/runs/{id}/visibility:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    patch:
+      tags:
+      - Runs
+      summary: Update run visibility
+      operationId: updateRunVisibility
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Updated
+          content:
+            application/json:
+              schema:
+                type: object
+  /v1/runs/{id}/tags:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    patch:
+      tags:
+      - Runs
+      summary: Update run tags
+      operationId: updateRunTags
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Updated
+          content:
+            application/json:
+              schema:
+                type: object
+  /v1/runs/{id}/feedback:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    patch:
+      tags:
+      - Runs
+      summary: Update run feedback
+      operationId: updateRunFeedback
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Updated
+          content:
+            application/json:
+              schema:
+                type: object
+  /v1/runs/{id}/score:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    patch:
+      tags:
+      - Runs
+      summary: Update run score
+      operationId: updateRunScore
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Updated
+          content:
+            application/json:
+              schema:
+                type: object
+  /v1/runs/{id}/related:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Runs
+      summary: List related runs
+      operationId: listRelatedRuns
+      responses:
+        '200':
+          description: Related runs
+          content:
+            application/json:
+              schema:
+                type: object
+  /v1/runs/ingest:
+    post:
+      tags:
+      - Runs
+      summary: Ingest run events
+      operationId: ingestRuns
+      security:
+      - ProjectPublicApiKeyAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '202':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                type: object
+components:
+  securitySchemes:
+    ProjectPrivateApiKeyAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Lunary project private API key (UUID)
+    ProjectPublicApiKeyAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Lunary project public API key (UUID)
+    OrgApiKeyAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Lunary organization API key (UUID)

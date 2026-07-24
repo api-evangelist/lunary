@@ -1,0 +1,444 @@
+openapi: 3.1.0
+info:
+  title: Lunary Analytics DatasetsV2 API
+  description: 'REST API for Lunary, an open-source LLM observability and evaluation
+
+    platform. Covers ingestion (runs/traces), prompt templates with versions,
+
+    datasets and dataset items, evaluations and criteria, analytics, audit
+
+    logs, checklists, playground endpoints, views, and models.
+
+
+    Three authentication schemes are used: project-scoped public API keys for
+
+    ingestion endpoints, project-scoped private API keys for management
+
+    endpoints, and organization-scoped API keys for org-level analytics. All
+
+    are passed as Bearer tokens in the Authorization header.
+
+    '
+  version: '1.0'
+  contact:
+    name: Lunary
+    url: https://docs.lunary.ai/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: https://api.lunary.ai
+  description: Lunary Cloud
+security:
+- ProjectPrivateApiKeyAuth: []
+tags:
+- name: DatasetsV2
+paths:
+  /v1/datasets-v2:
+    get:
+      tags:
+      - DatasetsV2
+      summary: List datasets (v2)
+      operationId: listDatasetsV2
+      responses:
+        '200':
+          description: Datasets
+          content:
+            application/json:
+              schema:
+                type: object
+    post:
+      tags:
+      - DatasetsV2
+      summary: Create dataset (v2)
+      operationId: createDatasetV2
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+  /v1/datasets-v2/{datasetId}:
+    parameters:
+    - name: datasetId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - DatasetsV2
+      summary: Get dataset (v2)
+      operationId: getDatasetV2
+      security:
+      - ProjectPublicApiKeyAuth: []
+      responses:
+        '200':
+          description: Dataset
+          content:
+            application/json:
+              schema:
+                type: object
+    patch:
+      tags:
+      - DatasetsV2
+      summary: Update dataset (v2)
+      operationId: updateDatasetV2
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Updated
+          content:
+            application/json:
+              schema:
+                type: object
+    delete:
+      tags:
+      - DatasetsV2
+      summary: Delete dataset (v2)
+      operationId: deleteDatasetV2
+      responses:
+        '204':
+          description: Deleted
+  /v1/datasets-v2/{datasetId}/evaluators:
+    parameters:
+    - name: datasetId
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      tags:
+      - DatasetsV2
+      summary: Add evaluator slot to dataset
+      operationId: addDatasetEvaluator
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+  /v1/datasets-v2/{datasetId}/evaluators/{slot}:
+    parameters:
+    - name: datasetId
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: slot
+      in: path
+      required: true
+      schema:
+        type: string
+    delete:
+      tags:
+      - DatasetsV2
+      summary: Remove evaluator slot
+      operationId: removeDatasetEvaluator
+      responses:
+        '204':
+          description: Removed
+  /v1/datasets-v2/{datasetId}/evaluators/run:
+    parameters:
+    - name: datasetId
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      tags:
+      - DatasetsV2
+      summary: Run dataset evaluators
+      operationId: runDatasetEvaluators
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '202':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                type: object
+  /v1/datasets-v2/{datasetId}/import:
+    parameters:
+    - name: datasetId
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      tags:
+      - DatasetsV2
+      summary: Import items into dataset
+      operationId: importDatasetItems
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '202':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                type: object
+  /v1/datasets-v2/{datasetId}/duplicate:
+    parameters:
+    - name: datasetId
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      tags:
+      - DatasetsV2
+      summary: Duplicate dataset
+      operationId: duplicateDataset
+      responses:
+        '201':
+          description: Duplicated
+          content:
+            application/json:
+              schema:
+                type: object
+  /v1/datasets-v2/{datasetId}/versions:
+    parameters:
+    - name: datasetId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - DatasetsV2
+      summary: List dataset versions
+      operationId: listDatasetVersions
+      responses:
+        '200':
+          description: Versions
+          content:
+            application/json:
+              schema:
+                type: object
+    post:
+      tags:
+      - DatasetsV2
+      summary: Create dataset version
+      operationId: createDatasetVersion
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+  /v1/datasets-v2/{datasetId}/versions/{versionId}:
+    parameters:
+    - name: datasetId
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: versionId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - DatasetsV2
+      summary: Get dataset version
+      operationId: getDatasetVersion
+      responses:
+        '200':
+          description: Version
+          content:
+            application/json:
+              schema:
+                type: object
+  /v1/datasets-v2/{datasetId}/versions/{versionId}/restore:
+    parameters:
+    - name: datasetId
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: versionId
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      tags:
+      - DatasetsV2
+      summary: Restore dataset version
+      operationId: restoreDatasetVersion
+      responses:
+        '200':
+          description: Restored
+          content:
+            application/json:
+              schema:
+                type: object
+  /v1/datasets-v2/{datasetId}/items:
+    parameters:
+    - name: datasetId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - DatasetsV2
+      summary: List dataset items
+      operationId: listDatasetItems
+      responses:
+        '200':
+          description: Items
+          content:
+            application/json:
+              schema:
+                type: object
+    post:
+      tags:
+      - DatasetsV2
+      summary: Create dataset item
+      operationId: createDatasetItem
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+  /v1/datasets-v2/{datasetId}/items/{itemId}:
+    parameters:
+    - name: datasetId
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: itemId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - DatasetsV2
+      summary: Get dataset item
+      operationId: getDatasetItem
+      responses:
+        '200':
+          description: Item
+          content:
+            application/json:
+              schema:
+                type: object
+    patch:
+      tags:
+      - DatasetsV2
+      summary: Update dataset item
+      operationId: updateDatasetItem
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Updated
+          content:
+            application/json:
+              schema:
+                type: object
+    delete:
+      tags:
+      - DatasetsV2
+      summary: Delete dataset item
+      operationId: deleteDatasetItem
+      responses:
+        '204':
+          description: Deleted
+  /v1/datasets-v2/{datasetId}/items/{itemId}/generate:
+    parameters:
+    - name: datasetId
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: itemId
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      tags:
+      - DatasetsV2
+      summary: Generate output for dataset item
+      operationId: generateDatasetItem
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Generation result
+          content:
+            application/json:
+              schema:
+                type: object
+components:
+  securitySchemes:
+    ProjectPrivateApiKeyAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Lunary project private API key (UUID)
+    ProjectPublicApiKeyAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Lunary project public API key (UUID)
+    OrgApiKeyAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Lunary organization API key (UUID)
