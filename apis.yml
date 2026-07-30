@@ -6,7 +6,20 @@ description: >-
   Lunary is an open-source LLM observability and evaluation platform: tracing, prompt management,
   datasets, evaluations, and analytics for LLM apps. Available as a hosted SaaS at lunary.ai and as a
   self-hosted Apache 2.0 deployment. Exposes a REST API authenticated with Bearer tokens.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/lunary.png
 tags:
   - AI Evaluation
   - Observability
@@ -18,27 +31,157 @@ created: '2026-05-08'
 modified: '2026-05-08'
 specificationVersion: '0.19'
 apis:
-  - aid: lunary:platform
-    name: Lunary API
-    description: >-
-      REST API for Lunary covering ingestion (logs/traces), prompts (template management with versions and
-      labels), datasets, evaluations, projects, users, and analytics. Authentication uses Bearer tokens;
-      private API keys for management endpoints, public keys for ingestion.
-    humanURL: https://docs.lunary.ai/api
-    baseURL: https://api.lunary.ai/v1
-    tags:
-      - Logs
-      - Traces
-      - Prompts
-      - Datasets
-      - Evaluations
-    properties:
-      - type: Documentation
-        url: https://docs.lunary.ai/api
-      - type: GitHub
-        url: https://github.com/lunary-ai/lunary
-      - type: SelfHost
-        url: https://lunary.ai/docs/self-hosting
+- aid: lunary:platform
+  name: Lunary API
+  description: >-
+    REST API for Lunary covering ingestion (logs/traces), prompts (template management with versions and
+    labels), datasets, evaluations, projects, users, and analytics. Authentication uses Bearer tokens;
+    private API keys for management endpoints, public keys for ingestion.
+  humanURL: https://docs.lunary.ai/api
+  baseURL: https://api.lunary.ai/v1
+  tags:
+  - Logs
+  - Traces
+  - Prompts
+  - Datasets
+  - Evaluations
+  properties:
+  - type: Documentation
+    url: https://docs.lunary.ai/api
+  - type: GitHub
+    url: https://github.com/lunary-ai/lunary
+  - type: SelfHost
+    url: https://lunary.ai/docs/self-hosting
+- aid: lunary:lunary-analytics-api
+  name: Lunary Analytics API
+  description: The Analytics API from Lunary — 1 operation(s) for analytics.
+  humanURL: https://docs.lunary.ai/api
+  baseURL: https://api.lunary.ai/v1
+  tags:
+  - Analytics
+  properties:
+  - type: OpenAPI
+    url: openapi/lunary-analytics-api-openapi.yml
+- aid: lunary:lunary-auditlogs-api
+  name: Lunary AuditLogs API
+  description: The AuditLogs API from Lunary — 1 operation(s) for auditlogs.
+  humanURL: https://docs.lunary.ai/api
+  baseURL: https://api.lunary.ai/v1
+  tags:
+  - AuditLogs
+  properties:
+  - type: OpenAPI
+    url: openapi/lunary-auditlogs-api-openapi.yml
+- aid: lunary:lunary-checklists-api
+  name: Lunary Checklists API
+  description: The Checklists API from Lunary — 2 operation(s) for checklists.
+  humanURL: https://docs.lunary.ai/api
+  baseURL: https://api.lunary.ai/v1
+  tags:
+  - Checklists
+  properties:
+  - type: OpenAPI
+    url: openapi/lunary-checklists-api-openapi.yml
+- aid: lunary:lunary-datasets-api
+  name: Lunary Datasets API
+  description: The Datasets API from Lunary — 3 operation(s) for datasets.
+  humanURL: https://docs.lunary.ai/api
+  baseURL: https://api.lunary.ai/v1
+  tags:
+  - Datasets
+  properties:
+  - type: OpenAPI
+    url: openapi/lunary-datasets-api-openapi.yml
+- aid: lunary:lunary-datasetsv2-api
+  name: Lunary DatasetsV2 API
+  description: The DatasetsV2 API from Lunary — 13 operation(s) for datasetsv2.
+  humanURL: https://docs.lunary.ai/api
+  baseURL: https://api.lunary.ai/v1
+  tags:
+  - DatasetsV2
+  properties:
+  - type: OpenAPI
+    url: openapi/lunary-datasetsv2-api-openapi.yml
+- aid: lunary:lunary-evals-api
+  name: Lunary Evals API
+  description: The Evals API from Lunary — 7 operation(s) for evals.
+  humanURL: https://docs.lunary.ai/api
+  baseURL: https://api.lunary.ai/v1
+  tags:
+  - Evals
+  properties:
+  - type: OpenAPI
+    url: openapi/lunary-evals-api-openapi.yml
+- aid: lunary:lunary-externalusers-api
+  name: Lunary ExternalUsers API
+  description: The ExternalUsers API from Lunary — 2 operation(s) for externalusers.
+  humanURL: https://docs.lunary.ai/api
+  baseURL: https://api.lunary.ai/v1
+  tags:
+  - ExternalUsers
+  properties:
+  - type: OpenAPI
+    url: openapi/lunary-externalusers-api-openapi.yml
+- aid: lunary:lunary-models-api
+  name: Lunary Models API
+  description: The Models API from Lunary — 2 operation(s) for models.
+  humanURL: https://docs.lunary.ai/api
+  baseURL: https://api.lunary.ai/v1
+  tags:
+  - Models
+  properties:
+  - type: OpenAPI
+    url: openapi/lunary-models-api-openapi.yml
+- aid: lunary:lunary-playground-api
+  name: Lunary Playground API
+  description: The Playground API from Lunary — 2 operation(s) for playground.
+  humanURL: https://docs.lunary.ai/api
+  baseURL: https://api.lunary.ai/v1
+  tags:
+  - Playground
+  properties:
+  - type: OpenAPI
+    url: openapi/lunary-playground-api-openapi.yml
+- aid: lunary:lunary-runs-api
+  name: Lunary Runs API
+  description: The Runs API from Lunary — 10 operation(s) for runs.
+  humanURL: https://docs.lunary.ai/api
+  baseURL: https://api.lunary.ai/v1
+  tags:
+  - Runs
+  properties:
+  - type: OpenAPI
+    url: openapi/lunary-runs-api-openapi.yml
+- aid: lunary:lunary-templates-api
+  name: Lunary Templates API
+  description: The Templates API from Lunary — 5 operation(s) for templates.
+  humanURL: https://docs.lunary.ai/api
+  baseURL: https://api.lunary.ai/v1
+  tags:
+  - Templates
+  properties:
+  - type: OpenAPI
+    url: openapi/lunary-templates-api-openapi.yml
+- aid: lunary:lunary-testendpoint-api
+  name: Lunary TestEndpoint API
+  description: The TestEndpoint API from Lunary — 2 operation(s) for testendpoint.
+  humanURL: https://docs.lunary.ai/api
+  baseURL: https://api.lunary.ai/v1
+  tags:
+  - TestEndpoint
+  properties:
+  - type: OpenAPI
+    url: openapi/lunary-testendpoint-api-openapi.yml
+- aid: lunary:lunary-views-api
+  name: Lunary Views API
+  description: The Views API from Lunary — 2 operation(s) for views.
+  humanURL: https://docs.lunary.ai/api
+  baseURL: https://api.lunary.ai/v1
+  tags:
+  - Views
+  properties:
+  - type: OpenAPI
+    url: openapi/lunary-views-api-openapi.yml
 common:
   - type: AgenticAccess
     url: agentic-access/lunary-agentic-access.yml
