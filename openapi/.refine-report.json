@@ -1,0 +1,38 @@
+{
+  "provider": "lunary",
+  "sources": [
+    "lunary-analytics-api-openapi.yml",
+    "lunary-auditlogs-api-openapi.yml",
+    "lunary-checklists-api-openapi.yml",
+    "lunary-datasets-api-openapi.yml",
+    "lunary-datasetsv2-api-openapi.yml",
+    "lunary-evals-api-openapi.yml",
+    "lunary-externalusers-api-openapi.yml",
+    "lunary-models-api-openapi.yml",
+    "lunary-playground-api-openapi.yml",
+    "lunary-runs-api-openapi.yml",
+    "lunary-templates-api-openapi.yml",
+    "lunary-testendpoint-api-openapi.yml",
+    "lunary-views-api-openapi.yml"
+  ],
+  "outputs": [
+    "lunary-analytics-api-openapi.yml",
+    "lunary-auditlogs-api-openapi.yml",
+    "lunary-checklists-api-openapi.yml",
+    "lunary-datasets-api-openapi.yml",
+    "lunary-datasetsv2-api-openapi.yml",
+    "lunary-evals-api-openapi.yml",
+    "lunary-externalusers-api-openapi.yml",
+    "lunary-models-api-openapi.yml",
+    "lunary-playground-api-openapi.yml",
+    "lunary-runs-api-openapi.yml",
+    "lunary-templates-api-openapi.yml",
+    "lunary-testendpoint-api-openapi.yml",
+    "lunary-views-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
