@@ -1,0 +1,71 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Lunary Analytics ExternalUsers API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ExternalUsers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List external users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.lunary.ai/v1/external-users"
+          },
+          "docs": "List external users"
+        },
+        {
+          "info": {
+            "name": "Get external user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.lunary.ai/v1/external-users/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get external user"
+        },
+        {
+          "info": {
+            "name": "Delete external user",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.lunary.ai/v1/external-users/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete external user"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,132 @@
+{
+  "item": [
+    {
+      "id": "a3d1a538-1010-498e-8700-60dc16869923",
+      "name": "Analytics",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "07bf3f5d-0674-468c-a5da-db70bd050f10",
+          "name": "Top models for the organization",
+          "request": {
+            "name": "Top models for the organization",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "analytics",
+                "org",
+                "models",
+                "top"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1b1eb933-9e6c-4aef-b108-37a5f3218e3b",
+              "name": "Top models",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "analytics",
+                    "org",
+                    "models",
+                    "top"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.lunary.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c0e9503e-a2cd-4439-bf12-f57406c2c7d7",
+    "name": "Lunary Analytics API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for Lunary, an open-source LLM observability and evaluation\nplatform. Covers ingestion (runs/traces), prompt templates with versions,\ndatasets and dataset items, evaluations and criteria, analytics, audit\nlogs, checklists, playground endpoints, views, and models.\n\nThree authentication schemes are used: project-scoped public API keys for\ningestion endpoints, project-scoped private API keys for management\nendpoints, and organization-scoped API keys for org-level analytics. All\nare passed as Bearer tokens in the Authorization header.\n\n\nContact Support:\n Name: Lunary",
+      "type": "text/plain"
+    }
+  }
+}

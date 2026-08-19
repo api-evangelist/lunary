@@ -1,0 +1,445 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Lunary Analytics DatasetsV2 API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "DatasetsV2",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List datasets (v2)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.lunary.ai/v1/datasets-v2"
+          },
+          "docs": "List datasets (v2)"
+        },
+        {
+          "info": {
+            "name": "Create dataset (v2)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.lunary.ai/v1/datasets-v2",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create dataset (v2)"
+        },
+        {
+          "info": {
+            "name": "Get dataset (v2)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.lunary.ai/v1/datasets-v2/:datasetId",
+            "params": [
+              {
+                "name": "datasetId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get dataset (v2)"
+        },
+        {
+          "info": {
+            "name": "Update dataset (v2)",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.lunary.ai/v1/datasets-v2/:datasetId",
+            "params": [
+              {
+                "name": "datasetId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update dataset (v2)"
+        },
+        {
+          "info": {
+            "name": "Delete dataset (v2)",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.lunary.ai/v1/datasets-v2/:datasetId",
+            "params": [
+              {
+                "name": "datasetId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete dataset (v2)"
+        },
+        {
+          "info": {
+            "name": "Add evaluator slot to dataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.lunary.ai/v1/datasets-v2/:datasetId/evaluators",
+            "params": [
+              {
+                "name": "datasetId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add evaluator slot to dataset"
+        },
+        {
+          "info": {
+            "name": "Remove evaluator slot",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.lunary.ai/v1/datasets-v2/:datasetId/evaluators/:slot",
+            "params": [
+              {
+                "name": "datasetId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "slot",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Remove evaluator slot"
+        },
+        {
+          "info": {
+            "name": "Run dataset evaluators",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.lunary.ai/v1/datasets-v2/:datasetId/evaluators/run",
+            "params": [
+              {
+                "name": "datasetId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Run dataset evaluators"
+        },
+        {
+          "info": {
+            "name": "Import items into dataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.lunary.ai/v1/datasets-v2/:datasetId/import",
+            "params": [
+              {
+                "name": "datasetId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Import items into dataset"
+        },
+        {
+          "info": {
+            "name": "Duplicate dataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.lunary.ai/v1/datasets-v2/:datasetId/duplicate",
+            "params": [
+              {
+                "name": "datasetId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Duplicate dataset"
+        },
+        {
+          "info": {
+            "name": "List dataset versions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.lunary.ai/v1/datasets-v2/:datasetId/versions",
+            "params": [
+              {
+                "name": "datasetId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List dataset versions"
+        },
+        {
+          "info": {
+            "name": "Create dataset version",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.lunary.ai/v1/datasets-v2/:datasetId/versions",
+            "params": [
+              {
+                "name": "datasetId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create dataset version"
+        },
+        {
+          "info": {
+            "name": "Get dataset version",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.lunary.ai/v1/datasets-v2/:datasetId/versions/:versionId",
+            "params": [
+              {
+                "name": "datasetId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "versionId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get dataset version"
+        },
+        {
+          "info": {
+            "name": "Restore dataset version",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.lunary.ai/v1/datasets-v2/:datasetId/versions/:versionId/restore",
+            "params": [
+              {
+                "name": "datasetId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "versionId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Restore dataset version"
+        },
+        {
+          "info": {
+            "name": "List dataset items",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.lunary.ai/v1/datasets-v2/:datasetId/items",
+            "params": [
+              {
+                "name": "datasetId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List dataset items"
+        },
+        {
+          "info": {
+            "name": "Create dataset item",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.lunary.ai/v1/datasets-v2/:datasetId/items",
+            "params": [
+              {
+                "name": "datasetId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create dataset item"
+        },
+        {
+          "info": {
+            "name": "Get dataset item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.lunary.ai/v1/datasets-v2/:datasetId/items/:itemId",
+            "params": [
+              {
+                "name": "datasetId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "itemId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get dataset item"
+        },
+        {
+          "info": {
+            "name": "Update dataset item",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.lunary.ai/v1/datasets-v2/:datasetId/items/:itemId",
+            "params": [
+              {
+                "name": "datasetId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "itemId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update dataset item"
+        },
+        {
+          "info": {
+            "name": "Delete dataset item",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.lunary.ai/v1/datasets-v2/:datasetId/items/:itemId",
+            "params": [
+              {
+                "name": "datasetId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "itemId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete dataset item"
+        },
+        {
+          "info": {
+            "name": "Generate output for dataset item",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.lunary.ai/v1/datasets-v2/:datasetId/items/:itemId/generate",
+            "params": [
+              {
+                "name": "datasetId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "itemId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate output for dataset item"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

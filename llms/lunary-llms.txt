@@ -1,0 +1,147 @@
+# Lunary Documentation
+
+## Docs
+
+- [Introduction](https://docs.lunary.ai/get-started/index.md)
+- [Docs MCP](https://docs.lunary.ai/get-started/docs-mcp.md): Search and read Lunary developer docs from your editor using MCP
+- [Python SDK Installation](https://docs.lunary.ai/integrations/python/installation.md)
+- [Python OpenAI integration](https://docs.lunary.ai/integrations/python/openai.md)
+- [Python Anthropic integration](https://docs.lunary.ai/integrations/python/anthropic.md)
+- [Python Azure OpenAI integration](https://docs.lunary.ai/integrations/python/azure-openai.md)
+- [Manual Usage](https://docs.lunary.ai/integrations/python/manual.md)
+- [Python SDK Reference](https://docs.lunary.ai/integrations/python/reference.md)
+- [JavaScript SDK](https://docs.lunary.ai/integrations/javascript/installation.md)
+- [JS OpenAI integration](https://docs.lunary.ai/integrations/javascript/openai.md)
+- [JavaScript Anthropic integration](https://docs.lunary.ai/integrations/javascript/anthropic.md)
+- [JS Azure OpenAI integration](https://docs.lunary.ai/integrations/javascript/azure-openai.md)
+- [Usage with React](https://docs.lunary.ai/integrations/javascript/react.md)
+- [Custom Models](https://docs.lunary.ai/integrations/javascript/custom-model.md)
+- [Manual Usage](https://docs.lunary.ai/integrations/javascript/manual.md)
+- [Serverless](https://docs.lunary.ai/integrations/javascript/serverless.md)
+- [Vercel AI SDK](https://docs.lunary.ai/integrations/javascript/vercel-ai-sdk.md): Send Vercel AI SDK telemetry to Lunary via OpenTelemetry.
+- [Observability via OpenTelemetry](https://docs.lunary.ai/integrations/opentelemetry/overview.md): Connect your LLM apps to Lunary with the OpenTelemetry standard.
+- [Sending OTEL Traces from Python](https://docs.lunary.ai/integrations/opentelemetry/otel-python.md): How to use OpenTelemetry Python SDK to export traces to Lunary.
+- [OpenTelemetry (OTEL) Mapping](https://docs.lunary.ai/integrations/opentelemetry/otel-mapping.md): Mapping OpenTelemetry attributes to Lunary properties.
+- [OpenAI integration](https://docs.lunary.ai/integrations/openai.md)
+- [Azure OpenAI integration](https://docs.lunary.ai/integrations/azure-openai.md)
+- [Mistral integration](https://docs.lunary.ai/integrations/mistral.md)
+- [LangChain Integration](https://docs.lunary.ai/integrations/langchain.md)
+- [Pydantic AI Integration](https://docs.lunary.ai/integrations/pydantic-ai.md)
+- [Ollama Integration](https://docs.lunary.ai/integrations/ollama.md)
+- [LiteLLM Integration](https://docs.lunary.ai/integrations/litellm.md)
+- [IBM WatsonX Integration](https://docs.lunary.ai/integrations/ibm.md)
+- [TrueFoundry integration](https://docs.lunary.ai/integrations/truefoundry.md)
+- [Flowise Integration](https://docs.lunary.ai/integrations/flowise.md)
+- [Step-by-Step Guide : Sending Events via the Lunary API](https://docs.lunary.ai/integrations/custom.md)
+- [Observability](https://docs.lunary.ai/features/observability.md)
+- [Product Analytics](https://docs.lunary.ai/features/product-analytics.md)
+- [Chats & Threads](https://docs.lunary.ai/features/conversations.md)
+- [Prompt Templates](https://docs.lunary.ai/features/prompts.md)
+- [Prompt Playground](https://docs.lunary.ai/features/prompt-playground.md)
+- [Classification](https://docs.lunary.ai/features/classification.md)
+- [Tagging](https://docs.lunary.ai/features/tags.md)
+- [User Tracking](https://docs.lunary.ai/features/users.md)
+- [Feedback Tracking](https://docs.lunary.ai/features/feedback.md)
+- [Data Security](https://docs.lunary.ai/more/security/introduction.md)
+- [CCPA compliance guide](https://docs.lunary.ai/more/security/CCPA.md)
+- [GDPR compliance guide](https://docs.lunary.ai/more/security/GDPR.md)
+- [Concepts](https://docs.lunary.ai/more/concepts.md)
+- [BigQuery Connector](https://docs.lunary.ai/more/data-warehouse/bigquery.md)
+- [Docker](https://docs.lunary.ai/more/self-hosting/docker.md)
+- [Docker Compose](https://docs.lunary.ai/more/self-hosting/docker-compose.md)
+- [Kubernetes](https://docs.lunary.ai/more/self-hosting/kubernetes.md)
+- [Introduction](https://docs.lunary.ai/api/introduction.md): Overview of the Lunary.ai API.
+- [List top models across an organization](https://docs.lunary.ai/api/analytics/list-top-models-across-an-organization.md): Returns the top models used across every project in the authenticated organization. This endpoint requires an org-level private API key supplied as a bearer token in the `Authorization` header.
+- [Retrieve audit logs](https://docs.lunary.ai/api/audit-logs/retrieve-audit-logs.md): Retrieve a list of audit logs for the current organization. Note that this functionality is still under development and the audits logs are not fully exhaustive.
+- [List all checklists](https://docs.lunary.ai/api/checklists/list-all-checklists.md): Retrieve all checklists for the current project. Optionally filter by type. Returns checklists ordered by most recently updated.
+- [Create a new checklist](https://docs.lunary.ai/api/checklists/create-a-new-checklist.md): Creates a new checklist with the provided slug, type, and data.
+- [Get a specific checklist](https://docs.lunary.ai/api/checklists/get-a-specific-checklist.md): Retrieve a specific checklist by its ID.
+- [Delete a checklist](https://docs.lunary.ai/api/checklists/delete-a-checklist.md): Delete a specific checklist by its ID.
+- [Update a checklist](https://docs.lunary.ai/api/checklists/update-a-checklist.md): Update an existing checklist's slug and/or data.
+- [List datasets v2](https://docs.lunary.ai/api/datasets-v2/list-datasets-v2.md)
+- [Create dataset v2](https://docs.lunary.ai/api/datasets-v2/create-dataset-v2.md)
+- [Get dataset v2](https://docs.lunary.ai/api/datasets-v2/get-dataset-v2.md)
+- [Delete dataset v2](https://docs.lunary.ai/api/datasets-v2/delete-dataset-v2.md)
+- [Update dataset v2](https://docs.lunary.ai/api/datasets-v2/update-dataset-v2.md)
+- [Attach an evaluator to a dataset](https://docs.lunary.ai/api/datasets-v2/attach-an-evaluator-to-a-dataset.md)
+- [Detach an evaluator from a dataset](https://docs.lunary.ai/api/datasets-v2/detach-an-evaluator-from-a-dataset.md)
+- [Run all evaluators attached to a dataset on every item](https://docs.lunary.ai/api/datasets-v2/run-all-evaluators-attached-to-a-dataset-on-every-item.md)
+- [Import dataset items from CSV or JSONL](https://docs.lunary.ai/api/datasets-v2/import-dataset-items-from-csv-or-jsonl.md)
+- [Duplicate dataset v2](https://docs.lunary.ai/api/datasets-v2/duplicate-dataset-v2.md)
+- [List dataset versions](https://docs.lunary.ai/api/datasets-v2/list-dataset-versions.md)
+- [Create dataset version snapshot](https://docs.lunary.ai/api/datasets-v2/create-dataset-version-snapshot.md)
+- [Get dataset version](https://docs.lunary.ai/api/datasets-v2/get-dataset-version.md)
+- [Restore dataset to a previous version](https://docs.lunary.ai/api/datasets-v2/restore-dataset-to-a-previous-version.md)
+- [Generate dataset item output](https://docs.lunary.ai/api/datasets-v2/generate-dataset-item-output.md)
+- [List dataset v2 items](https://docs.lunary.ai/api/datasets-v2/list-dataset-v2-items.md)
+- [Create dataset v2 item](https://docs.lunary.ai/api/datasets-v2/create-dataset-v2-item.md)
+- [Get dataset v2 item](https://docs.lunary.ai/api/datasets-v2/get-dataset-v2-item.md)
+- [Delete dataset v2 item](https://docs.lunary.ai/api/datasets-v2/delete-dataset-v2-item.md)
+- [Update dataset v2 item](https://docs.lunary.ai/api/datasets-v2/update-dataset-v2-item.md)
+- [List datasets](https://docs.lunary.ai/api/datasets/list-datasets.md)
+- [Create a new dataset](https://docs.lunary.ai/api/datasets/create-a-new-dataset.md)
+- [Get dataset by ID or slug](https://docs.lunary.ai/api/datasets/get-dataset-by-id-or-slug.md)
+- [Delete a dataset](https://docs.lunary.ai/api/datasets/delete-a-dataset.md)
+- [Update a dataset](https://docs.lunary.ai/api/datasets/update-a-dataset.md)
+- [Create a new prompt](https://docs.lunary.ai/api/datasets/create-a-new-prompt.md)
+- [Get prompt by ID](https://docs.lunary.ai/api/datasets/get-prompt-by-id.md)
+- [Delete a prompt](https://docs.lunary.ai/api/datasets/delete-a-prompt.md)
+- [Update a prompt](https://docs.lunary.ai/api/datasets/update-a-prompt.md)
+- [Get prompt variation by ID](https://docs.lunary.ai/api/datasets/get-prompt-variation-by-id.md)
+- [Delete a prompt variation](https://docs.lunary.ai/api/datasets/delete-a-prompt-variation.md)
+- [Update a prompt variation](https://docs.lunary.ai/api/datasets/update-a-prompt-variation.md)
+- [Create a new prompt variation](https://docs.lunary.ai/api/datasets/create-a-new-prompt-variation.md)
+- [List evaluations](https://docs.lunary.ai/api/evals/list-evaluations.md)
+- [Create a new evaluation](https://docs.lunary.ai/api/evals/create-a-new-evaluation.md)
+- [Get evaluation by ID](https://docs.lunary.ai/api/evals/get-evaluation-by-id.md)
+- [Delete an evaluation](https://docs.lunary.ai/api/evals/delete-an-evaluation.md)
+- [Update an evaluation](https://docs.lunary.ai/api/evals/update-an-evaluation.md)
+- [Run the evaluation](https://docs.lunary.ai/api/evals/run-the-evaluation.md)
+- [Create a criterion](https://docs.lunary.ai/api/evals/create-a-criterion.md)
+- [Get criterion by ID](https://docs.lunary.ai/api/evals/get-criterion-by-id.md)
+- [Delete a criterion](https://docs.lunary.ai/api/evals/delete-a-criterion.md)
+- [Update a criterion](https://docs.lunary.ai/api/evals/update-a-criterion.md)
+- [List results for an evaluation](https://docs.lunary.ai/api/evals/list-results-for-an-evaluation.md)
+- [Get a single result](https://docs.lunary.ai/api/evals/get-a-single-result.md)
+- [List project users](https://docs.lunary.ai/api/users/list-project-users.md): This endpoint retrieves a list of users tracked within the project. It supports pagination, filtering, and sorting options.
+- [Get a specific user](https://docs.lunary.ai/api/users/get-a-specific-user.md)
+- [Delete a specific user](https://docs.lunary.ai/api/users/delete-a-specific-user.md)
+- [List models](https://docs.lunary.ai/api/models/list-models.md)
+- [Create a new model](https://docs.lunary.ai/api/models/create-a-new-model.md)
+- [Delete a model](https://docs.lunary.ai/api/models/delete-a-model.md)
+- [Update a model](https://docs.lunary.ai/api/models/update-a-model.md)
+- [List all playground endpoints](https://docs.lunary.ai/api/playground-endpoints/list-all-playground-endpoints.md): Get all playground endpoints for the current project
+- [Create a playground endpoint](https://docs.lunary.ai/api/playground-endpoints/create-a-playground-endpoint.md): Create a new playground endpoint
+- [Get a playground endpoint](https://docs.lunary.ai/api/playground-endpoints/get-a-playground-endpoint.md): Get a specific playground endpoint by ID
+- [Update a playground endpoint](https://docs.lunary.ai/api/playground-endpoints/update-a-playground-endpoint.md): Update an existing playground endpoint
+- [Delete a playground endpoint](https://docs.lunary.ai/api/playground-endpoints/delete-a-playground-endpoint.md): Delete a playground endpoint
+- [Get runs](https://docs.lunary.ai/api/runs/get-runs.md): The Runs API endpoint allows you to retrieve data about specific runs from your Lunary application.
+- [Get run usage statistics](https://docs.lunary.ai/api/runs/get-run-usage-statistics.md): Retrieve usage statistics for runs
+- [Export runs data](https://docs.lunary.ai/api/runs/export-runs-data.md): This endpoint requires a valid private API key sent as a bearer token.
+- [Get a specific run](https://docs.lunary.ai/api/runs/get-a-specific-run.md): Retrieve detailed information about a specific run by its ID.
+- [Delete a run](https://docs.lunary.ai/api/runs/delete-a-run.md): Delete a specific run by its ID. This action is irreversible.
+- [Update run visibility](https://docs.lunary.ai/api/runs/update-run-visibility.md)
+- [Update run tags](https://docs.lunary.ai/api/runs/update-run-tags.md)
+- [Feedback Tracking](https://docs.lunary.ai/api/runs/feedback-tracking.md)
+- [Update run score](https://docs.lunary.ai/api/runs/update-run-score.md)
+- [Get related runs](https://docs.lunary.ai/api/runs/get-related-runs.md)
+- [Ingest run events](https://docs.lunary.ai/api/runs/ingest-run-events.md): This endpoint is for reporting data from platforms not supported by our SDKs.
+- [Get the latest version](https://docs.lunary.ai/api/templates/get-the-latest-version.md): This is the most common endpoint you'll use when working with prompt templates.
+- [Update a template version](https://docs.lunary.ai/api/templates/update-a-template-version.md)
+- [List all templates](https://docs.lunary.ai/api/templates/list-all-templates.md): List all the prompt templates in your project, along with their versions. Useful for usecases where you might want to pre-load all the templates in your application.
+- [Create a new template](https://docs.lunary.ai/api/templates/create-a-new-template.md): Creates a new template with the provided details. The template includes a slug, mode, content, and additional configuration options.
+- [Get a specific template](https://docs.lunary.ai/api/templates/get-a-specific-template.md): Get a specific prompt template and all its versions by its ID.
+- [Delete a template](https://docs.lunary.ai/api/templates/delete-a-template.md)
+- [Update a template](https://docs.lunary.ai/api/templates/update-a-template.md): This endpoint allows you to update the slug and mode of an existing template. The mode can be either "text" or "openai" (array of chat messages).
+- [Create a new version](https://docs.lunary.ai/api/templates/create-a-new-version.md): This endpoint allows you to push a new version of a prompt. You can specify the content, extra parameters, test values, draft status, and notes for the new version.
+- [Test endpoint for playground API testing](https://docs.lunary.ai/api/test/test-endpoint-for-playground-api-testing.md): A public endpoint that echoes back the request data for testing the playground custom API feature
+- [Test endpoint with authentication check](https://docs.lunary.ai/api/test/test-endpoint-with-authentication-check.md): A test endpoint that validates authentication headers
+- [List all views](https://docs.lunary.ai/api/views/list-all-views.md): Retrieves a list of all views for the current project, ordered by most recently updated.
+- [Create a new view](https://docs.lunary.ai/api/views/create-a-new-view.md): Creates a new dashboard view with the provided details.
+- [Get a specific view](https://docs.lunary.ai/api/views/get-a-specific-view.md): Retrieves details of a specific view by its ID.
+- [Delete a view](https://docs.lunary.ai/api/views/delete-a-view.md): Deletes a specific view by its ID.
+- [Update a view](https://docs.lunary.ai/api/views/update-a-view.md): Updates an existing view with the provided details.
+
+## OpenAPI Specs
+
+- [openapi](https://api.lunary.ai/v1/openapi)
