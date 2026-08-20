@@ -23,6 +23,13 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/lunary.png
 tags:
   - AI Evaluation
   - Observability
+  - Open-Source
+  - LLM
+  - Tracing
+  - Prompts
+tags_raw:
+  - AI Evaluation
+  - Observability
   - Open Source
   - LLM
   - Tracing
@@ -68,6 +75,8 @@ apis:
   humanURL: https://docs.lunary.ai/api
   baseURL: https://api.lunary.ai/v1
   tags:
+  - Audit Logs
+  tags_raw:
   - AuditLogs
   properties:
   - type: OpenAPI
@@ -118,6 +127,8 @@ apis:
   humanURL: https://docs.lunary.ai/api
   baseURL: https://api.lunary.ai/v1
   tags:
+  - External Users
+  tags_raw:
   - ExternalUsers
   properties:
   - type: OpenAPI
