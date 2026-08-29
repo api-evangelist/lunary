@@ -6,6 +6,18 @@ description: >-
   Lunary is an open-source LLM observability and evaluation platform: tracing, prompt management,
   datasets, evaluations, and analytics for LLM apps. Available as a hosted SaaS at lunary.ai and as a
   self-hosted Apache 2.0 deployment. Exposes a REST API authenticated with Bearer tokens.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
