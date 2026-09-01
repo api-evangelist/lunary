@@ -139,7 +139,7 @@ apis:
   humanURL: https://docs.lunary.ai/api
   baseURL: https://api.lunary.ai/v1
   tags:
-  - ExternalUsers
+  - External Users
   tags_raw:
   - ExternalUsers
   properties:
