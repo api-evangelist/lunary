@@ -82,18 +82,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/lunary-analytics-api-openapi.yml
-- aid: lunary:lunary-auditlogs-api
-  name: Lunary AuditLogs API
-  description: The AuditLogs API from Lunary — 1 operation(s) for auditlogs.
-  humanURL: https://docs.lunary.ai/api
-  baseURL: https://api.lunary.ai/v1
-  tags:
-  - Audit Logs
-  tags_raw:
-  - AuditLogs
-  properties:
-  - type: OpenAPI
-    url: openapi/lunary-auditlogs-api-openapi.yml
 - aid: lunary:lunary-checklists-api
   name: Lunary Checklists API
   description: The Checklists API from Lunary — 2 operation(s) for checklists.
@@ -114,16 +102,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/lunary-datasets-api-openapi.yml
-- aid: lunary:lunary-datasetsv2-api
-  name: Lunary DatasetsV2 API
-  description: The DatasetsV2 API from Lunary — 13 operation(s) for datasetsv2.
-  humanURL: https://docs.lunary.ai/api
-  baseURL: https://api.lunary.ai/v1
-  tags:
-  - DatasetsV2
-  properties:
-  - type: OpenAPI
-    url: openapi/lunary-datasetsv2-api-openapi.yml
 - aid: lunary:lunary-evals-api
   name: Lunary Evals API
   description: The Evals API from Lunary — 7 operation(s) for evals.
@@ -134,18 +112,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/lunary-evals-api-openapi.yml
-- aid: lunary:lunary-externalusers-api
-  name: Lunary ExternalUsers API
-  description: The ExternalUsers API from Lunary — 2 operation(s) for externalusers.
-  humanURL: https://docs.lunary.ai/api
-  baseURL: https://api.lunary.ai/v1
-  tags:
-  - External Users
-  tags_raw:
-  - ExternalUsers
-  properties:
-  - type: OpenAPI
-    url: openapi/lunary-externalusers-api-openapi.yml
 - aid: lunary:lunary-models-api
   name: Lunary Models API
   description: The Models API from Lunary — 2 operation(s) for models.
@@ -206,6 +172,36 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/lunary-views-api-openapi.yml
+- aid: lunary:lunary-audit-logs-api
+  name: Lunary Audit Logs API
+  description: The Audit Logs API from Lunary — 1 operation(s) for audit logs.
+  humanURL: https://docs.lunary.ai/api
+  baseURL: https://api.lunary.ai/v1
+  tags:
+  - Audit Logs
+  properties:
+  - type: OpenAPI
+    url: openapi/lunary-audit-logs-api-openapi.yml
+- aid: lunary:lunary-datasets-v2-api
+  name: Lunary Datasets V2 API
+  description: The Datasets V2 API from Lunary — 13 operation(s) for datasets v2.
+  humanURL: https://docs.lunary.ai/api
+  baseURL: https://api.lunary.ai/v1
+  tags:
+  - Datasets V2
+  properties:
+  - type: OpenAPI
+    url: openapi/lunary-datasets-v2-api-openapi.yml
+- aid: lunary:lunary-external-users-api
+  name: Lunary External Users API
+  description: The External Users API from Lunary — 2 operation(s) for external users.
+  humanURL: https://docs.lunary.ai/api
+  baseURL: https://api.lunary.ai/v1
+  tags:
+  - External Users
+  properties:
+  - type: OpenAPI
+    url: openapi/lunary-external-users-api-openapi.yml
 common:
   - type: AgenticAccess
     url: agentic-access/lunary-agentic-access.yml
