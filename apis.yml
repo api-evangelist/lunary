@@ -64,6 +64,12 @@ apis:
   - Traces
   - Prompts
   - Datasets
+  - Evaluation
+  tags_raw:
+  - Logs
+  - Traces
+  - Prompts
+  - Datasets
   - Evaluations
   properties:
   - type: Documentation
