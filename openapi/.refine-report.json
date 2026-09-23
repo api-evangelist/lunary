@@ -1,19 +1,7 @@
 {
   "provider": "lunary",
   "sources": [
-    "lunary-analytics-api-openapi.yml",
-    "lunary-auditlogs-api-openapi.yml",
-    "lunary-checklists-api-openapi.yml",
-    "lunary-datasets-api-openapi.yml",
-    "lunary-datasetsv2-api-openapi.yml",
-    "lunary-evals-api-openapi.yml",
-    "lunary-externalusers-api-openapi.yml",
-    "lunary-models-api-openapi.yml",
-    "lunary-playground-api-openapi.yml",
-    "lunary-runs-api-openapi.yml",
-    "lunary-templates-api-openapi.yml",
-    "lunary-testendpoint-api-openapi.yml",
-    "lunary-views-api-openapi.yml"
+    "_original/lunary-openapi.yml"
   ],
   "outputs": [
     "lunary-analytics-api-openapi.yml",
@@ -30,9 +18,30 @@
     "lunary-testendpoint-api-openapi.yml",
     "lunary-views-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 3 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "lunary-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "superseded outputs removed: lunary-audit-logs-api-openapi.yml, lunary-datasets-v2-api-openapi.yml, lunary-external-users-api-openapi.yml",
+    "apis.yml register: written (+3 apis, 14 total)"
+  ],
+  "skipped": [
+    "lunary-analytics-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lunary-audit-logs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lunary-checklists-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lunary-datasets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lunary-datasets-v2-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lunary-evals-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lunary-external-users-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lunary-models-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lunary-playground-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lunary-runs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lunary-templates-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lunary-testendpoint-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lunary-views-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
