@@ -7,16 +7,17 @@ description: >-
   datasets, evaluations, and analytics for LLM apps. Available as a hosted SaaS at lunary.ai and as a
   self-hosted Apache 2.0 deployment. Exposes a REST API authenticated with Bearer tokens.
 deliveryModel:
-  model: saas
-  open_source: false
+  model: unknown
+  open_source: unknown
   commercial: true
   callable_host: true
-  label: Hosted service · you call their endpoint
-  confidence: high
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
   source:
   - openapi
   - pricing
-  generated: '2026-08-28'
+  - repository-unlicensed
+  generated: '2026-09-25'
   method: derived
 accessModel:
   pricing: freemium
@@ -36,7 +37,7 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/lunary.png
 tags:
   - AI Evaluation
   - Observability
-  - Open-Source
+  - Open Source
   - LLM
   - Tracing
   - Prompts
@@ -47,6 +48,7 @@ tags_raw:
   - LLM
   - Tracing
   - Prompts
+  - Open-Source
 created: '2026-05-08'
 modified: '2026-05-08'
 specificationVersion: '0.23'
