@@ -34,6 +34,10 @@ accessModel:
   generated: '2026-09-03'
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/lunary.png
+x-docs-platform: mintlify
+x-docs-platform-confidence: medium
+x-docs-platform-checked: 2026-10-03
+x-docs-hosting: vercel
 tags:
   - AI Evaluation
   - Observability
@@ -211,6 +215,9 @@ apis:
   - type: OpenAPI
     url: openapi/lunary-external-users-api-openapi.yml
 common:
+  - type: CapabilityMap
+    url: capabilities/lunary-capability-edges.yml
+    name: Lunary Business Capability Map
   - type: AgenticAccess
     url: agentic-access/lunary-agentic-access.yml
   - type: DomainSecurity
