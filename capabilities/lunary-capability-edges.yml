@@ -1,0 +1,66 @@
+slug: lunary
+provider: Lunary
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 5
+edges:
+- tag: Evals
+  spec_file: lunary-evals-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.85
+  evidence: POST /v1/evals/{id}/run  runEval  Run evaluation; POST /v1/evals/criteria  createEvalCriterion  Create
+    evaluation criterion
+  reason: Creating, running and reading results of model evaluations against defined criteria is squarely
+    AI/ML model lifecycle and responsible-AI evaluation work.
+- tag: Datasets V2
+  spec_file: lunary-datasets-v2-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.8
+  evidence: POST /v1/datasets-v2/{datasetId}/evaluators/run  runDatasetEvaluators  Run dataset evaluators
+  reason: Datasets with attached evaluator slots, evaluator runs and dataset versioning are LLM evaluation
+    artefacts — AI/ML model lifecycle and MLOps management rather than general data governance.
+- tag: Runs
+  spec_file: lunary-runs-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.75
+  evidence: POST /v1/runs/ingest  ingestRuns  Ingest run events; GET /v1/runs/usage  getRunUsage  Get
+    run usage statistics
+  reason: Ingesting LLM run traces and attaching feedback, scores and usage statistics is LLM observability/MLOps
+    — operational monitoring of AI models, mapped to Artificial Intelligence Management rather than SaaS
+    service observability of the vendor's own platform.
+- tag: Datasets
+  spec_file: lunary-datasets-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.72
+  evidence: 'GET /v1/datasets  listDatasets  List datasets; vendor: ''tracing, prompt management, datasets,
+    evaluations, and analytics for LLM apps'''
+  reason: Datasets here are the test/evaluation datasets used in the LLM evaluation workflow described
+    by the vendor, part of the AI/ML model lifecycle and MLOps tooling. Thin operation detail keeps confidence
+    moderate.
+- tag: Templates
+  spec_file: lunary-templates-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.7
+  evidence: POST /v1/templates/{id}/versions  createTemplateVersion  Create template version
+  reason: Templates with versioning correspond to the vendor's stated 'prompt management' function — versioned
+    prompt artefacts governed as part of the AI/ML lifecycle. Moderate confidence since 'template' is
+    generic in the operations alone.
